@@ -13,8 +13,6 @@ import RouterElements from './functions/Routes';
 
 const Home: FC = () => {
 
-
-
   return (
     <>
       <div>

@@ -6,11 +6,10 @@ const Setting: React.FC = () => {
     
     return (
         <>
-            <Header page='Setting' />
             <div>
                 設定フォーム
             </div>
-            <Form page="setting" />
+            <Form page="Setting" />
         </>
     )
 
