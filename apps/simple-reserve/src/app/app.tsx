@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Header from './components/Header';
 import Navigation from './components/Navigation'
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { NavLink,Link,useLocation,useParams } from 'react-router-dom';
 import Home from './Home';
 import DefineRoute from './functions/Routes';
 import store from './Stores/TestStore'
@@ -12,38 +12,28 @@ import Count from './components/count'
 
 
 
-
 export function App() {
+
+  const {pathname} = useLocation();
   
   return (
+    <>
+    <Header page={pathname} />
     <div>
-      <Link to="/Setting">
+      <NavLink exact to="/Setting">
         setting
-      </Link>
-      <Link to="/about">
+      </NavLink>
+      <NavLink exact to="/about">
         about
-      </Link>
-      <Link to="/home">
+      </NavLink>
+      <NavLink exact to="/home">
         home
-      </Link>
+      </NavLink>
       <DefineRoute />
+      {/* <Count /> */}
     </div>
+    </>
   );
 }
-
-// const mapStateToProps = (state) => {
-//   return { 
-//     count: state.count
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     increase: () => dispatch({ type: "INCREASE_COUNT" }),
-//     decrease: () => dispatch({ type: "DECREASE_COUNT" }),
-//   };
-// };
-
-// export default connect(mapStateToProps,mapDispatchToProps)(App);
 
 export default App;

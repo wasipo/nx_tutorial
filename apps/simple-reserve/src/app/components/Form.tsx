@@ -5,12 +5,12 @@ type Props = {
   page: string 
 }
 
-const Form: FC<Props> = (Props) => {
+const Form: FC<Props> = ({page}) => {
 
   return (
     <div>
       {
-      (Props.page === 'setting') ?
+      (page === 'Setting') ?
       <SettingForm /> : 
       ''
       }
