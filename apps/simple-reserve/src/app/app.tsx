@@ -11,13 +11,29 @@ import { connect } from "react-redux";
 import Count from './components/count'
 
 
+import * as colors from "@material-ui/core/colors";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+
 
 export function App() {
 
   const {pathname} = useLocation();
   
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: colors.blue[600],
+      },
+      type: "dark",
+    },
+  });
+
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
+    <CssBaseline>
     <Header page={pathname} />
     <div>
       <NavLink exact to="/Setting">
@@ -32,7 +48,8 @@ export function App() {
       <DefineRoute />
       {/* <Count /> */}
     </div>
-    </>
+    </CssBaseline>
+    </ThemeProvider>
   );
 }
 
