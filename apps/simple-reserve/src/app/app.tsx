@@ -24,9 +24,12 @@ export function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
+        main: colors.orange[600],
+      },
+      secondary: {
         main: colors.blue[600],
       },
-      type: "dark",
+      type: "light",
     },
   });
 
