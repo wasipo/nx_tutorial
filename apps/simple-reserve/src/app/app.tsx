@@ -24,11 +24,15 @@ export function App() {
   const theme = createMuiTheme({
     palette: {
       primary: {
-        main: colors.orange[600],
-      },
+        light: '#757ce8',
+        main: '#3f50b5',
+        dark: '#002884',
+        contrastText: '#333',      },
       secondary: {
-        main: colors.blue[600],
-      },
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
+        contrastText: '#333',      },
       type: "light",
     },
   });
