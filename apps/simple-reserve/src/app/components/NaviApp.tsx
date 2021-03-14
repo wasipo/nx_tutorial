@@ -16,33 +16,6 @@ import Box from '@material-ui/core/Box';
 import RouterElements from '../functions/Routes';
 import { makeStyles } from '@material-ui/core';
 
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -72,20 +45,8 @@ const NaviApp:FC<Props> = ({page}) => {
     history.push(newValue);
   };
 
-
-
- 
   return (
     <div>
-      {/* <NavLink exact to="/Setting">
-        setting
-      </NavLink>
-      <NavLink exact to="/about">
-        about
-      </NavLink>
-      <NavLink exact to="/home">
-        home
-      </NavLink> */}
       <Router>
         <div className={classes.root}>
         <AppBar position="static">
@@ -104,7 +65,6 @@ const NaviApp:FC<Props> = ({page}) => {
           <Route path="/users" component={RouterElements} />
         </Switch>
       </Router>
-      {/* <Count /> */}
     </div>
 
   )
