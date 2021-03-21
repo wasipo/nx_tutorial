@@ -13,6 +13,7 @@ import Count from './components/count'
 import * as colors from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { Container } from '@material-ui/core';
 
 
 
@@ -40,8 +41,10 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
     <CssBaseline>
-    <Header page={pathname} />
-    <Navigation page={pathname} />
+    <Container fixed>
+      <Header page={pathname} />
+      <Navigation page={pathname} />
+    </Container>
     </CssBaseline>
     </ThemeProvider>
   );

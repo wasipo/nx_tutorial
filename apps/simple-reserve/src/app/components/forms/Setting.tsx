@@ -1,14 +1,33 @@
 import React,{FC, useEffect} from 'react';
 import {useForm} from 'react-hook-form';
-import { Button, makeStyles,TextField,FormControl,FormLabel } from "@material-ui/core";
-import { InputWrapper,Input,StyledButton,TypeText } from '../../css/styled/common';
-import styled from 'styled-components';
+import {
+  Button, 
+  makeStyles,
+  TextField,
+  FormControl,
+  FormLabel,
+  Grid,
+  NativeSelect,Select, Box } from "@material-ui/core";
+import { InputWrapper,Input,StyledButton,TypeText} from '../../css/styled/common';
+
+const theme = {
+  spacing: 8,
+}
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+  },
+
+
+}));
 
 
 const Setting: FC = () => {
 
   const { setValue, register,handleSubmit } = useForm();
-  
+  const classes = useStyles();
+
   const onSubmit = data => console.log(data);
   useEffect(() => {
     register({ name: "storeName", type: "custom" }, { required: true });
@@ -18,35 +37,57 @@ const Setting: FC = () => {
   }, [register]);
 
 
+  
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>
-        <FormControl>
-          <FormLabel htmlFor="storeName">店舗名</FormLabel>
-          <TextField name="storeName" type="text" onChange={async e => setValue("storeName", e.target.value)} />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="firstName">担当者名: 性</FormLabel>
-          <TextField name="firstName" type="text" onChange={async e => setValue("firstName", e.target.value)} />
-        </FormControl>
+        <Grid container spacing={3} justify="center">
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <FormLabel htmlFor="storeName">店舗名</FormLabel>
+              <TextField name="storeName" type="text" onChange={async e => setValue("storeName", e.target.value)} />
+            </FormControl>
+          </Grid>
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <FormLabel htmlFor="holiday">定休日</FormLabel>
+              <TextField name="holiday" type="text" onChange={async e => setValue("holiday", e.target.value)} />
+            </FormControl>
+          </Grid>
+        </Grid>
       </InputWrapper>
+      <Box mb={3}>
       <InputWrapper>
-          <FormControl>
-            <FormLabel htmlFor="lastName">担当者名: 名</FormLabel>
-            <TextField name="lastName" type="text" onChange={async e => setValue("lastName", e.target.value)} />
-          </FormControl>
-          <FormControl>
-            <FormLabel htmlFor="holiday">定休日</FormLabel>
-            <TextField name="holiday" type="text" onChange={async e => setValue("holiday", e.target.value)} />
-          </FormControl>
+      <Grid container spacing={3} justify="center">
+          <Grid item sm={6}>
+            <FormControl variant="outlined" fullWidth>
+              <FormLabel htmlFor="lastName">担当者名: 名</FormLabel>
+              <TextField name="lastName" type="text" onChange={async e => setValue("lastName", e.target.value)} />
+            </FormControl>
+          </Grid>
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <FormLabel htmlFor="firstName">担当者名: 性</FormLabel>
+              <TextField name="firstName" type="text" onChange={async e => setValue("firstName", e.target.value)} />
+            </FormControl>
+          </Grid>
+      </Grid>
       </InputWrapper>
+      </Box>
+      <Box mx="auto" width="15%">
       <FormControl>
-        <StyledButton type="submit">Styled Components</StyledButton>
+        <Button color="primary" variant="contained" type="submit">店舗情報送信</Button>
       </FormControl>
+      </Box>
     </form>
   );
 
 } 
 
 export default Setting;
+
+// function useStyles() {
+//   throw new Error('Function not implemented.');
+// }
 

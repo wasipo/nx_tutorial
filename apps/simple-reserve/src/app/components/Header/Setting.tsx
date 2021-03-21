@@ -4,7 +4,7 @@ import React,{FC} from 'react';
 
 const Setting: FC = () => (
   <div>
-    setting header
+    店舗情報設定
   </div>
 );
 

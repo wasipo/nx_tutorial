@@ -9,7 +9,8 @@ import {
   RouteComponentProps
 } from 'react-router-dom';
 import Home from '../Home';
-import Setting from '../Setting';
+import Store from '../components/Setting/Store';
+import Reserve from '../components/Setting/Reserve';
 
 
 
@@ -18,8 +19,8 @@ const RouterElements: FC = () => {
 
   return (
     <Switch>
-      <Route path="/about">
-        <About />
+      <Route path="/Reserve">
+        <Reserve />
       </Route>
       <Route path="/users">
         <Users />
@@ -27,8 +28,8 @@ const RouterElements: FC = () => {
       <Route path="/home">
         <Home />
       </Route>
-      <Route path="/Setting" datae="setting">
-        <Setting />
+      <Route path="/Store" datae="Store">
+        <Store />
       </Route>
     </Switch>
   )
