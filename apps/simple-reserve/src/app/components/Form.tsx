@@ -1,5 +1,5 @@
 import React,{FC} from 'react';
-import SettingForm from './forms/Setting';
+import StoreInfo from './forms/Setting/StoreInfo';
 
 type Props = {
   page: string 
@@ -10,8 +10,8 @@ const Form: FC<Props> = ({page}) => {
   return (
     <div>
       {
-      (page === 'Setting') ?
-      <SettingForm /> : 
+      (page === 'StoreInfo') ?
+      <StoreInfo /> : 
       ''
       }
     </div>

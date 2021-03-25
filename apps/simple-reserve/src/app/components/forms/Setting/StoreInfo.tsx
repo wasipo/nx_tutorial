@@ -8,7 +8,7 @@ import {
   FormLabel,
   Grid,
   NativeSelect,Select, Box } from "@material-ui/core";
-import { InputWrapper,Input,StyledButton,TypeText} from '../../css/styled/common';
+  import {InputWrapper} from '../../../css/styled/common';
 
 const theme = {
   spacing: 8,
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Setting: FC = () => {
+const StoreInfo: FC = () => {
 
   const { setValue, register,handleSubmit } = useForm();
   const classes = useStyles();
@@ -74,10 +74,26 @@ const Setting: FC = () => {
           </Grid>
       </Grid>
       </InputWrapper>
+      <InputWrapper>
+      <Grid container spacing={3} justify="center">
+          <Grid item sm={6}>
+            <FormControl variant="outlined" fullWidth>
+              <FormLabel htmlFor="lastName">始業時間</FormLabel>
+              <TextField name="lastName" type="text" onChange={async e => setValue("lastName", e.target.value)} />
+            </FormControl>
+          </Grid>
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <FormLabel htmlFor="firstName">終業時間</FormLabel>
+              <TextField name="firstName" type="text" onChange={async e => setValue("firstName", e.target.value)} />
+            </FormControl>
+          </Grid>
+      </Grid>
+      </InputWrapper>
       </Box>
       <Box mx="auto" width="15%">
       <FormControl>
-        <Button color="primary" variant="contained" type="submit">店舗情報送信</Button>
+        <Button color="primary" variant="contained" type="submit">店舗設定完了</Button>
       </FormControl>
       </Box>
     </form>
@@ -85,7 +101,7 @@ const Setting: FC = () => {
 
 } 
 
-export default Setting;
+export default StoreInfo;
 
 // function useStyles() {
 //   throw new Error('Function not implemented.');

@@ -19,7 +19,7 @@ const Store: React.FC = () => {
             </Grid>
           </Grid>
           {/* <Box width="67%" mx="auto"> */}
-            <Form page="Setting" />
+            <Form page="StoreInfo" />
           {/* </Box> */}
         </Container>
         </>
