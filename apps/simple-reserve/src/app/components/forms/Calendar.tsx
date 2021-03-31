@@ -12,13 +12,21 @@ import moment from 'moment';
 import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
 import { useCallback } from 'react';
 import { ModeCommentTwoTone } from '@material-ui/icons';
+import {appointments} from '../../datas/appointments';
+
 
 moment.locale('ja');
 const d = moment().format('YYYY-MM-DD');
 const t = moment().add(7,'days').format('YYYY-MM-DD');
-
-
 const formatTimeScaleDate = date => moment(date).format('hh:mm');
+
+
+
+const schedulerData = [
+  { startDate: '2021-03-29T09:45', endDate: '2021-03-29T11:00', title: '〇' },
+  { startDate: '2018-11-01T12:00', endDate: '2018-11-01T13:30', title: 'Go to a gym' },
+];
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -76,30 +84,47 @@ const DayScaleCell = (props) => {
     />)
 };
 
+const test = (props) => {
+ 
+  return <DateNavigator.NavigationButton {...props} style={{ color: "red" }} navigatortext={"aaaa"} />;
+
+}
+
+const Appointment = (props) => {
+  return <Appointments.Appointment {...props} style={{backgroundColor: "red",fontSize: '1rem'}} />
+};
+
+
 
 const Calendar : React.FC = () => {
 
 
   const [currentDate, setCurrentDate] = React.useState(d);
 
-
-
   const Root = useCallback(
       (props) => {
+        
         return <Toolbar.Root {...props} style={{ background: "#eee" }} />;
       },
       [currentDate]
   )
 
+  const currentDateChange = (currentDate) => { 
+    if(moment(currentDate) < moment(new Date()).add(-1,'week')) return false;
+    setCurrentDate(currentDate); 
+  };
+
 
   return (<>
       <Paper>
         <Scheduler
-          // data={schedulerData}
+          data={appointments}
           firstDayOfWeek={1}
+          locale={'ja-JP'}
         >
           <ViewState
-            defaultCurrentDate={currentDate}
+            currentDate={currentDate}
+            onCurrentDateChange={currentDateChange}
           />
           <WeekView
             startDayHour={9}
@@ -109,13 +134,13 @@ const Calendar : React.FC = () => {
             timeScaleLabelComponent={TimeScaleLabel}
           />
           <Toolbar rootComponent={Root} />
-          <DateNavigator
-          />
-          <Appointments />
+          <DateNavigator navigationButtonComponent={test} />
+          <Appointments appointmentComponent={Appointment} />
         </Scheduler>
       </Paper>
   </>)
 
 }
+
 
 export default Calendar;
